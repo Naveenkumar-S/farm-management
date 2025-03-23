@@ -1,0 +1,16 @@
+const BodyParser = require('body-parser'),
+  BaseHelper = require('./base-helper'),
+  ErrorHandler = require('./middlewares/errors');
+class Middlewares extends BaseHelper {
+  constructor(dependencies, configs, context) {
+    super(dependencies, configs, context)
+  }
+
+  async registerMiddlewares() {
+    const me = this
+    me.dependencies.app.use(BodyParser.json())
+    me.dependencies.app.use(ErrorHandler)
+  }
+}
+
+module.exports = Middlewares
