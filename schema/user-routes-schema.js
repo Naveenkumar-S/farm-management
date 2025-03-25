@@ -1,7 +1,7 @@
 const Joi = require('joi'),
   _ = require('lodash'),
   Enum = require('./../common/enum'),
-  Constants = require('../common/Constants');
+  Constants = require('../common/constants');
 
 const SignUp = Joi.object({
   first_name: Joi.string().min(2).max(30).required(),
