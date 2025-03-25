@@ -1,6 +1,6 @@
 const { customAlphabet } = require('nanoid'),
   _ = require('lodash'),
-  Enum = require('./common/en');
+  Enum = require('./common/enum');
 
 class BaseHelper {
   constructor(dependencies, configs, context) {

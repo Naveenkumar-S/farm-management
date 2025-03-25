@@ -4,7 +4,7 @@ const { Router } = require('express'),
   { authenticate } = require('../middlewares/authenticate'),
   { authorize } = require('../middlewares/authorize'),
   Schema = require('./../schema/farm-routes-schema'),
-  Enum = require('../common/en'),
+  Enum = require('../common/enum'),
   FarmRoutesHandler = require('./../handlers/farm-routes-handler');
 
 // https://www.bacancytechnology.com/blog/joi-validation-in-nodejs-and-express

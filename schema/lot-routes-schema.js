@@ -1,6 +1,6 @@
 const Joi = require('joi'),
   _ = require('lodash'),
-  Enum = require('../common/en');
+  Enum = require('../common/enum');
 
 const CreateLot = Joi.object({
   farm_id: Joi.string().required(),
