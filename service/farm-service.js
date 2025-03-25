@@ -1,8 +1,8 @@
 const uuid = require('uuid'),
   _ = require('lodash'),
   BaseHelper = require('./../base-helper'),
-  Errors = require('../common/errors'),
-  Enum = require('../common/enum'),
+  Errors = require('../common/err'),
+  Enum = require('../common/en'),
   FarmsAccessor = require('../db-accessors/farms-accessor');
 class FarmService extends BaseHelper {
   constructor(dependencies, configs, context) {

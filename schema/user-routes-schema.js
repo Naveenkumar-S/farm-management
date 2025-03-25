@@ -1,6 +1,6 @@
 const Joi = require('joi'),
   _ = require('lodash'),
-  Enum = require('./../common/enum'),
+  Enum = require('../common/en'),
   Constants = require('./../common/constants');
 
 const SignUp = Joi.object({
