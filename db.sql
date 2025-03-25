@@ -37,3 +37,15 @@ CREATE TABLE IF NOT EXISTS lot_events
  WITH (
    OIDS=FALSE
  );
+
+CREATE TABLE IF NOT EXISTS users
+ (
+   id uuid,
+   data jsonb,
+   created_date timestamp with time zone DEFAULT now(),
+   modified_date timestamp with time zone DEFAULT now(),
+   CONSTRAINT users_pkey PRIMARY KEY (id)
+ )
+ WITH (
+   OIDS=FALSE
+ );

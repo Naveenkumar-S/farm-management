@@ -6,12 +6,23 @@ class LotRoutesHandler extends BaseHelper {
     this.lotService = new LotService(dependencies, configs, context)
   }
 
-  async createLot() {
+  async createLot(req, res, next) {
     const me = this
     try {
-      return await me.lotService.createLot()
+      let result = await me.lotService.createLot(req.body)
+      me.replySuccess(res, result)
     } catch (e) {
-      throw e
+      me.replyError(res, e)
+    }
+  }
+
+  async addLotEvent(req, res, next) {
+    const me = this
+    try {
+      let result = await me.lotService.addLotEvent(req.body)
+      me.replySuccess(res, result)
+    } catch (e) {
+      me.replyError(res, e)
     }
   }
 }

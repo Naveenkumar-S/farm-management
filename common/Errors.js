@@ -32,7 +32,47 @@ class FarmNotFound extends BaseErrorWithArgs {
   }
 }
 
+class UpdateFarmDetailsFailed extends BaseError {
+  constructor(args = {}) {
+    super('Failed to update farm details')
+    this.status_code = 500
+  }
+}
+
+class LotNotFound extends BaseErrorWithArgs {
+  constructor(args = {}) {
+    super('Lot not found', args)
+    this.status_code = 404
+  }
+}
+
+class UserNotFound extends BaseError {
+  constructor(args = {}) {
+    super('User not found')
+    this.status_code = 404
+  }
+}
+
+class InvalidPassword extends BaseError {
+  constructor(args = {}) {
+    super('Invalid password')
+    this.status_code = 400
+  }
+}
+
+class UserAlreadyRegistered extends BaseError {
+  constructor(args = {}) {
+    super('User already registered')
+    this.status_code = 500
+  }
+}
+
 module.exports = {
   Unauthorized,
-  FarmNotFound
+  FarmNotFound,
+  UpdateFarmDetailsFailed,
+  LotNotFound,
+  UserNotFound,
+  InvalidPassword,
+  UserAlreadyRegistered
 }

@@ -1,4 +1,5 @@
 const BodyParser = require('body-parser'),
+  CookieParser = require('cookie-parser'),
   BaseHelper = require('./base-helper'),
   ErrorHandler = require('./middlewares/errors');
 class Middlewares extends BaseHelper {
@@ -9,6 +10,7 @@ class Middlewares extends BaseHelper {
   async registerMiddlewares() {
     const me = this
     me.dependencies.app.use(BodyParser.json())
+    me.dependencies.app.use(CookieParser())
     me.dependencies.app.use(ErrorHandler)
   }
 }

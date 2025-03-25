@@ -25,6 +25,16 @@ class FarmRoutesHandler extends BaseHelper {
       me.replyError(res, e)
     }
   }
+
+  async getFarm(req, res, next) {
+    const me = this
+    try {
+      let result = await me.farmService.getFarm(req.query)
+      me.replySuccess(res, result)
+    } catch (e) {
+      me.replyError(res, e)
+    }
+  }
 }
 
 module.exports = FarmRoutesHandler

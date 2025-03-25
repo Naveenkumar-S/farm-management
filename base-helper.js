@@ -1,5 +1,6 @@
 const { customAlphabet } = require('nanoid'),
-  Enum = require('./common/Enum');
+  _ = require('lodash'),
+  Enum = require('./common/enum');
 
 class BaseHelper {
   constructor(dependencies, configs, context) {
@@ -8,13 +9,27 @@ class BaseHelper {
     this.context = context
   }
 
-  shortId(length = 10) {
+  shortId(prefix = Enum.ShortIdPrefix.Default, length = 10) {
     const nanoid = customAlphabet(Enum.ShortIdCharacters, 10)
-    return nanoid(length)
+    return prefix + nanoid(length)
+  }
+
+  setCookies(response, result) {
+    let cookies = _.get(result, 'cookies', {})
+    for (let key in cookies) {
+      let value = cookies[key]
+      response.cookie(key, value, {
+        maxAge: 1000 * 60 * 60 * 4,
+        httpOnly: true
+      })
+    }
+    _.unset(result, 'cookies')
   }
 
   replySuccess(response, result) {
+    const me = this
     try {
+      me.setCookies(response, result)
       return response.status(200).send(result)
     } catch (e) {
       throw e
@@ -23,7 +38,7 @@ class BaseHelper {
 
   replyError(response, error) {
     try {
-      return response.status(error.status_code || 500).send({ 
+      return response.status(error.status_code || 500).send({
         ...error.args,
         error: error.error || 'UnexpectedError',
         message: error.message || 'Unexpected error occurred'
