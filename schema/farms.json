@@ -1,0 +1,14 @@
+{
+  "id": "",
+  "name": "",
+  "is_active": "",
+  "owner": "",
+  "address": {
+    "line_1": "",
+    "line_2": "",
+    "district": "",
+    "state": "",
+    "country": "",
+    "postal_code": "000000"
+  }
+}
