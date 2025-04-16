@@ -1,8 +1,8 @@
-const Configs = require('./config.json')
-const Server = require('./server')
-const Middlewares = require('./middlewares')
-const Routes = require('./routes')
-const DB = require('./db')
+const Server = require('./server'),
+  Middlewares = require('./middlewares'),
+  Routes = require('./routes'),
+  DB = require('./db'),
+  Config = require('./config');
 class App {
   constructor() {
     this.dependencies = {}
@@ -12,7 +12,8 @@ class App {
 
   fetchConfig() {
     const me = this
-    me.configs = Configs
+    let config = new Config(me.dependencies, me.configs, me.context)
+    config.init()
   }
 
   initDBConnection() {
@@ -41,12 +42,16 @@ class App {
 
   async start() {
     const me = this
-    me.fetchConfig()
-    me.initDBConnection()
-    await me.initServer()
-    await me.registerMiddlewares()
-    await me.registerRoutes()
-    console.log('Server running successfully!!!')
+    try {
+      me.fetchConfig()
+      me.initDBConnection()
+      await me.initServer()
+      await me.registerMiddlewares()
+      await me.registerRoutes()
+      console.log('Server running successfully!!!')
+    } catch (e) {
+      throw e
+    }
   }
 }
 

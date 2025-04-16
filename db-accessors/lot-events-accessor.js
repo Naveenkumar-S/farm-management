@@ -53,6 +53,15 @@ class LotEventsAccessor extends BaseHelper {
       throw e
     }
   }
+
+  async getActiveEvents() {
+    const me = this
+    try {
+      return await me.pgp.any(`SELECT * from lot_events where data->>'start_date' < now() AND data->>'end_date' > now()`, [])
+    } catch (e) {
+      throw e
+    }
+  }
 }
 
 module.exports = LotEventsAccessor

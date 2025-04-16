@@ -1,7 +1,7 @@
 const { Router } = require('express'),
   BaseHelper = require('../base-helper'),
   { validateBody, validateQuery } = require('./../middlewares/validate'),
-  Schema = require('./../schema/lot-routes-schema'),
+  Schema = require('./../schema/api/lot-routes-schema'),
   LotRoutesHandler = require('./../handlers/lot-routes-handler');
 class LotRoutes extends BaseHelper {
   constructor(dependencies, configs, context) {

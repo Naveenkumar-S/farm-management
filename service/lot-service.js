@@ -1,6 +1,6 @@
 const uuid = require('uuid'),
   _ = require('lodash'),
-  moment = require('moment'),
+  moment = require('moment-timezone'),
   BaseHelper = require('./../base-helper'),
   Errors = require('../common/errors'),
   Enum = require('../common/enum'),
@@ -22,8 +22,8 @@ class LotService extends BaseHelper {
       let id = uuid.v4()
       let lotId = me.shortId(Enum.ShortIdPrefix.Lots)
       let farmId = _.get(requestBody, 'farm_id')
-      let startDate = moment(_.get(requestBody, 'start_date')).toISOString()
-      let endDate = moment(_.get(requestBody, 'end_date')).toISOString()
+      let startDate = moment.tz(_.get(requestBody, 'start_date'), 'Asia/Kolkata')
+      let endDate = moment.tz(_.get(requestBody, 'end_date'), 'Asia/Kolkata')
       let data = {
         lot_id: lotId,
         farm_id: farmId,
@@ -45,8 +45,8 @@ class LotService extends BaseHelper {
       let farmId = _.get(requestBody, 'farm_id')
       let lotId = _.get(requestBody, 'lot_id')
       let eventType = _.get(requestBody, 'event_type')
-      let startDate = moment(_.get(requestBody, 'start_date')).toISOString()
-      let endDate = moment(_.get(requestBody, 'end_date')).toISOString()
+      let startDate = moment.tz(_.get(requestBody, 'start_date'), 'Asia/Kolkata')
+      let endDate = moment.tz(_.get(requestBody, 'end_date'), 'Asia/Kolkata')
       let data = {
         event_id: eventId,
         farm_id: farmId,

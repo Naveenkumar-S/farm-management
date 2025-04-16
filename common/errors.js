@@ -67,6 +67,20 @@ class UserAlreadyRegistered extends BaseError {
   }
 }
 
+class FailedToSendToQueue extends BaseError {
+  constructor(args = {}) {
+    super('Failed to send message to queue')
+    this.status_code = 500
+  }
+}
+
+class FailedToPublish extends BaseError {
+  constructor(args = {}) {
+    super('Failed to publish message to exchange')
+    this.status_code = 500
+  }
+}
+
 module.exports = {
   Unauthorized,
   FarmNotFound,
@@ -74,5 +88,7 @@ module.exports = {
   LotNotFound,
   UserNotFound,
   InvalidPassword,
-  UserAlreadyRegistered
+  UserAlreadyRegistered,
+  FailedToSendToQueue,
+  FailedToPublish
 }

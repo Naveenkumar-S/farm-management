@@ -3,7 +3,7 @@ const { Router } = require('express'),
   { validateBody, validateQuery } = require('./../middlewares/validate'),
   { authenticate } = require('../middlewares/authenticate'),
   { authorize } = require('../middlewares/authorize'),
-  Schema = require('./../schema/farm-routes-schema'),
+  Schema = require('./../schema/api/farm-routes-schema'),
   Enum = require('../common/enum'),
   FarmRoutesHandler = require('./../handlers/farm-routes-handler');
 

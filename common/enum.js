@@ -17,9 +17,34 @@ const Roles = {
   Farmer: 'FR'
 }
 
+const MessageHistoryStatus = {
+  Queued: 'Queued',
+  Completed: 'Completed',
+  Failed: 'Failed',
+  Skipped: 'Skipped',
+}
+
+const Exchanges = {
+  Notifications: 'notifications'
+}
+
+const NotificationTypes = {
+  WhatsApp: 'WhatsApp'
+}
+
+const NotificationStatus = {
+  Scheduled: 'Scheduled',
+  Sent: 'Sent',
+  Failed: 'Failed'
+}
+
 module.exports = {
   Countries,
   ShortIdPrefix,
   ShortIdCharacters,
-  Roles
+  Roles,
+  MessageHistoryStatus,
+  Exchanges,
+  NotificationTypes,
+  NotificationStatus
 }

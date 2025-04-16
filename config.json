@@ -22,5 +22,24 @@
     "database": "farm_management",
     "user": "farm_service",
     "password": "farm_service"
+  },
+  "amqp": {
+    "protocol": "amqp",
+    "host": "localhost",
+    "port": 5672,
+    "user": "guest",
+    "password": "guest",
+    "mappings": [
+      {
+        "exchange": "notifications",
+        "type": "fanout",
+        "bindings": [
+          {
+            "queue": "notifications",
+            "routing_key": ""
+          }
+        ]
+      }
+    ]
   }
 }

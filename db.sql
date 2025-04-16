@@ -49,3 +49,39 @@ CREATE TABLE IF NOT EXISTS users
  WITH (
    OIDS=FALSE
  );
+
+CREATE TABLE IF NOT EXISTS event_requests
+ (
+   id uuid,
+   data jsonb,
+   created_date timestamp with time zone DEFAULT now(),
+   modified_date timestamp with time zone DEFAULT now(),
+   CONSTRAINT event_requests_pkey PRIMARY KEY (id)
+ )
+ WITH (
+   OIDS=FALSE
+ );
+
+CREATE TABLE IF NOT EXISTS event_responses
+ (
+   id uuid,
+   data jsonb,
+   created_date timestamp with time zone DEFAULT now(),
+   modified_date timestamp with time zone DEFAULT now(),
+   CONSTRAINT event_responses_pkey PRIMARY KEY (id)
+ )
+ WITH (
+   OIDS=FALSE
+ );
+
+CREATE TABLE IF NOT EXISTS message_history
+ (
+   id uuid,
+   data jsonb,
+   created_date timestamp with time zone DEFAULT now(),
+   modified_date timestamp with time zone DEFAULT now(),
+   CONSTRAINT message_history_pkey PRIMARY KEY (id)
+ )
+ WITH (
+   OIDS=FALSE
+ );

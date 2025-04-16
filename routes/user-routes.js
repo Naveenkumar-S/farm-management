@@ -3,7 +3,7 @@ const { Router } = require('express'),
   { validateBody, validateQuery } = require('./../middlewares/validate'),
   { authenticate, checkSignIn } = require('../middlewares/authenticate'),
   { authorize } = require('../middlewares/authorize'),
-  Schema = require('./../schema/user-routes-schema'),
+  Schema = require('./../schema/api/user-routes-schema'),
   UserRoutesHandler = require('./../handlers/user-routes-handler');
 
 // https://www.bacancytechnology.com/blog/joi-validation-in-nodejs-and-express
