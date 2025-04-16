@@ -2,6 +2,9 @@ const amqp = require('amqplib'),
   Errors = require('./common/errors'),
   BaseHelper = require('./base-helper');
 
+// API refernce - https://amqp-node.github.io/amqplib/channel_api.html
+// Guides - https://www.rabbitmq.com/tutorials/tutorial-three-javascript
+// https://medium.com/@rafael.guzman/how-to-consume-publish-rabbitmq-message-in-nodejs-cb68b5a6484c
 class AMQP extends BaseHelper {
   constructor(dependencies, configs, context) {
     super(dependencies, configs, context)
