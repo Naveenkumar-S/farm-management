@@ -3,11 +3,13 @@ const uuid = require('uuid'),
   BaseHelper = require('./../base-helper'),
   Errors = require('../common/errors'),
   Enum = require('../common/enum'),
+  MappingService = require('./mapping-service'),
   FarmsAccessor = require('../db-accessors/farms-accessor');
 class FarmService extends BaseHelper {
   constructor(dependencies, configs, context) {
     super(dependencies, configs, context)
     this.farmsAccessor = new FarmsAccessor(dependencies, configs, context)
+    this.mappingService = new MappingService(dependencies, configs, context)
   }
 
   async addFarm(requestBody) {
@@ -20,6 +22,13 @@ class FarmService extends BaseHelper {
         ...requestBody
       }
       await me.farmsAccessor.insert({ id, data })
+      let owner = _.get(requestBody, 'owner')
+      if (owner) {
+        await me.mappingService.mapFarmToUser({
+          email: owner,
+          farm_id: farmId
+        })
+      }
       return { farm_id: farmId }
     } catch (e) {
       throw e
@@ -50,7 +59,7 @@ class FarmService extends BaseHelper {
         })
       }
       farmDetails = _.first(farmDetails)
-      return _.get(farmDetails, 'data')
+      return [_.get(farmDetails, 'data')]
     } catch (e) {
       throw e
     }

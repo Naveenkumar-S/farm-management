@@ -5,7 +5,7 @@ const Joi = require('joi'),
 const AddFarm = Joi.object({
   name: Joi.string().required(),
   is_active: Joi.bool().required(),
-  owner: Joi.string().required(),
+  owner: Joi.string().optional(),
   address: Joi.object({
     line_1: Joi.string().required(),
     line_2: Joi.string().optional(),
@@ -32,7 +32,7 @@ const EditFarm = Joi.object({
 })
 
 const GetFarm = Joi.object({
-  farm_id: Joi.string().required()
+  farm_id: Joi.string().optional()
 })
 
 module.exports = {

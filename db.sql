@@ -85,3 +85,15 @@ CREATE TABLE IF NOT EXISTS message_history
  WITH (
    OIDS=FALSE
  );
+
+CREATE TABLE IF NOT EXISTS farm_user_mappings
+ (
+   id uuid,
+   data jsonb,
+   created_date timestamp with time zone DEFAULT now(),
+   modified_date timestamp with time zone DEFAULT now(),
+   CONSTRAINT farm_user_mappings_pkey PRIMARY KEY (id)
+ )
+ WITH (
+   OIDS=FALSE
+ );

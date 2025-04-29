@@ -36,8 +36,7 @@ class FarmRoutes extends BaseHelper {
     me.router.get('/v1/farms/fetch',
       [
         validateQuery(Schema.GetFarm),
-        authenticate(me.configs.app.jwt),
-        authorize(me.configs.app.role_privileges, Enum.Roles.SuperUser)
+        // authenticate(me.configs.app.jwt)
       ],
       async (req, res, next) => {
         return await me.farmRoutesHandler.getFarm(req, res, next)

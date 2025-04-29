@@ -20,7 +20,7 @@ class UserRoutes extends BaseHelper {
     // ToDo: Implement RateLimiter
     me.router.post('/v1/users/signup',
       [
-        validateQuery(Schema.SignUp),
+        validateBody(Schema.SignUp),
         authenticate(me.configs.app.jwt),
         authorize(me.configs.app.role_privileges)
       ],

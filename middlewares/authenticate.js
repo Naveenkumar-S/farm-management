@@ -12,7 +12,7 @@ const authenticate = (jwtOptions) => {
     let decoded = jwt.verify(token, jwtOptions.secret, {
       algorithms: [jwtOptions.algorithm]
     })
-    _.set(req, 'headers.role', _.get(decoded, 'role'))
+    _.set(req, 'headers.user_details', decoded)
     next()
   }
 }
